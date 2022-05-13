@@ -62,22 +62,57 @@ public class ConnectFour {
 
     public boolean hasWon() {
         for (int i = 0; i <= 5; i++) {
-            int j = 0;
-            int count = 0;
-            while (j < 6) {
+            int count = 1;
+            for (int j = 0; j <= 5; j++) {
                 if (board[i][j] != 0) {
                     if (board[i][j] == board[i][j + 1]) {
                         count++;
-                    } else {
-                        count = 0;
                     }
-
+                    else {
+                        count = 1;
+                    }
                     if (count == 4) {
+                        System.out.println("Player " + board[i][j] + " wins!");
                         return true;
                     }
                 }
             }
         }
+
+        for (int i = 0; i <= 6; i++) {
+            int count = 1;
+            for (int j = 0; j <= 4; j++) {
+                if (board[j][i] != 0) {
+                    if (board[j][i] == board[j+1][i]) {
+                        count++;
+                    }
+                    else {
+                        count = 1;
+                    }
+                    if (count == 4) {
+                        System.out.println("Player " + board[j][i] + " wins!");
+                        return true;
+                    }
+                }
+            }
+        }
+
+        for (int i = 3; i <= 5; i++) {
+            int count = 1;
+            for (int j = 0; j <= i - 1; j++) {
+                if (board[i - j][j] != 0) {
+                    if (board[i - j - 1][j + 1] == board[i - j][j]) {
+                        count++;
+                    }
+                }
+
+                if (count == 4) {
+                    System.out.println("Player " + board[i - j][j] + " wins!");
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 }

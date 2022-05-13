@@ -6,7 +6,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input;
         int turnNum = 1;
+        int activePlayer = 1;
+        System.out.println("Board initialized");
         while (!c4.hasWon()) {
+            activePlayer = 2 - turnNum % 2;
+            System.out.println("Player " + activePlayer + " turn:");
             input = sc.nextLine();
             if (turnNum % 2 == 1) {
                 boolean temp = c4.playerOneMove(input);
